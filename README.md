@@ -1,6 +1,6 @@
 ﻿# Generator evaluator selector modular net for panoptic image segmentation
 This code for the paper [Generator evaluator-selector net: a modular approach for
-panoptic segmentation](). To download the same code with trained model weight (ready to run )see these links [1]() [2]().
+panoptic segmentation](). To download the same code with trained models weights (ready to run )see these links [1]() [2]().
 
 ## Basic concept
 The system is composed of a Generator (Pointer Net) that generate segments, evaluator (Evaluation net) that rank and select segments to create category independent segmentation map (Figure 1), and a segment classification net that classifies the selected segments. The nets and the weights were trained and tested on the COCO panoptic data set.
