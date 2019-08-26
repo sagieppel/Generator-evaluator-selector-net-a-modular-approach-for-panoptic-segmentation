@@ -110,4 +110,4 @@ Refinement net is used to polish the boundaries of the generated segment. The ne
 Determining the segment category is done using a region-specific classification net. The net receives the image and a segment mask. The net predicts the category of the input segment (Figure 2f). This approach has been explored in previous works. 
 
 
-![](/Figure2.JPG)
+![](/Figure2.jpg)
