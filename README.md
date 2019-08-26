@@ -17,7 +17,7 @@ The system was run and trained using Python Anacoda 3.7 with pytorch 1.01, and o
 2. Open “RUN.py” in the main dir
 3. Set  input image folder path  to “ImageDir” (the images must be  .jpg format)
 4. Set output image folder to “OutFolder” 
-5. (Optional) Set “ClassificationConsistancyThresh” to 0 if you interesting in class agnostic segmentation, or to 0.65 if you are interested in getting the best results on COCO panoptic.  The “ClassificationConsistancyThresh”  parameter determines how consistent the segment category prediction must be in order for the segment to be accepted.filter segment with hard to determined categories.
+5. (Optional) Set “ClassificationConsistancyThresh” to 0 if you interesting in class agnostic segmentation, or to 0.65 if you are interested in getting the best results on COCO panoptic.  The “ClassificationConsistancyThresh”  parameter determines how consistent the segment category prediction must be in order for the segment to be accepted.
 6. Run “RUN.py”  results will appear in the OutFolder path
 (This scripts should run without change with the sample data included.) 
 ## What does this do
@@ -34,7 +34,7 @@ Each of the subfolders PointerSegmentation/Evaluation/Classification/Refinement
 contains a “TRAIN.py” script.  
 Running this “TRAIN.py” should train the net.
 All training scripts can be run without change with the sample data included in ‘SampleData’ folder. 
-However, If you really want to train net you need to first generate data, see Generating Data section.
+To train net with real data you need to first generate training data, see Generating data for training section.
 
 
 
@@ -44,7 +44,7 @@ Each of the subfolders PointerSegmentation/Evaluation/Classification/Refinement
 contains a “Evaluate.py” script.  
 Running this “Evaluate.py” should generate evaluation statistics .
 All evaluation scripts can be run without change with the sample data included. 
-However, If you want to evaluate  the net with real data, you need to first generate data.
+To evaluate  the net with real data, you need to first generate data.
 See Generating Data section for more instruction.
 Note, that you need to either train or [download trained model]() before evaluating. 
 
@@ -71,10 +71,10 @@ This 3 folders are the inputs for Pointer net training, they also be used to gen
 # Generating data for Evaluation/Classification/Refinement nets.
 1. First you need one or more trained  Pointer net models, and the data used for the pointer net training.
 2.  In the “PointerSegmentation” folder run the “GenerateDataClassEqual.py” and the 
-“GenerateDataAllFiles.py” scripts. These will generate the data, However before data can be used for training it must be cleaned (See cleaning data section) 
+“GenerateDataAllFiles.py” scripts. These will generate the data. However before data can be used for training it must be cleaned (See cleaning data section) 
 ### What does this generate?
-These scripts takes the all the trained pointer nets models and apply them to the Pointer Training net data to generate predicted segmentation mask. The output folder contain subfolders “Pred” and “GT” which contain the predicted segment mask and the matching Ground Truth segment masks. The segments file names contain the name of the image used to generate the masks, the mask category ID (COCO), and the IOU between the predicted and GT segments. 
-These folders should be used as inputs for the  Evaluation/Classification/Refinement nets (after they pass the cleaning process)
+These scripts takes the all the trained pointer nets models and use them on the Pointer Training net data to generate predicted segmentation mask. The output folder contain subfolders “Pred” and “GT” which contain the predicted segment mask and the matching Ground Truth segment masks. The segments file names contain the name of the image used to generate the masks, the mask category ID (COCO), and the IOU between the predicted and GT segments. 
+These folders should be used as inputs for the  Evaluation/Classification/Refinement nets (after the data pass the cleaning process)
 ## Cleaning training data  for Evaluation/Classification/Refinement nets (important).
    1. Open ‘/PointerSegmentation/CleanGeneratedData/RUNCleaner.py”
    2. Set the path for the COCO image folder to the   “ImageDir” variable
@@ -82,7 +82,7 @@ These folders should be used as inputs for the  Evaluation/Classification/Refine
    4. Set the path to the COCO panoptic data json file to  the “DataFile” Variable
    5. Run the script. (This will add ‘V’ to names of correct files and ‘Wrong’ to  the rest)
 ### What does this do/clean?
-The pairs of predicted and  GT segments generated earlier, might not correspond to each other. Hence, the predicted segment might match a different ground truth segment then the one in the data. In this case the cleaner will add the ‘WRONG’ to the file name else it will add ‘V’ readers of the evaluation/classification/refinement nets will not use files that have ‘WRONG’ in their names.
+The pairs of predicted and  GT segments generated earlier, might not correspond to each other. Hence, the predicted segment might match a different ground truth segment then the one assign to  it. In this case the cleaner will add the ‘WRONG’ to the file name else it will add ‘V’ readers of the evaluation/classification/refinement nets will not use files that have ‘WRONG’ in their names.
 
 
 
