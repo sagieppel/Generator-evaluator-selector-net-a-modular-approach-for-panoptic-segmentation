@@ -4,7 +4,7 @@ panoptic segmentation](). To download the same code with trained models weights 
 
 ## Basic concept
 The system is composed of a Generator (Pointer Net) that generate segments, evaluator (Evaluation net) that rank and select segments to create category independent segmentation map (Figure 1), and a segment classification net that classifies the selected segments. The nets and the weights were trained and tested on the COCO panoptic data set.
-See the tutorial section for running/training instructions and the description section for more detail on the system.
+See the tutorial section for running/training instructions and the description section for more details on the system.
 ### Requirements 
 The system was run and trained using Python Anacoda 3.7 with pytorch 1.01, and opencv on single Titan XP GPU.
 
