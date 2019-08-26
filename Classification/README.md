@@ -3,4 +3,4 @@
 The net receives the image and a segment mask. The net predicts the category of the input segment.
 
 
-![](/Figure.png)
+![](/Classification/Figure.png)
