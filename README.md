@@ -6,7 +6,7 @@ panoptic segmentation](). To download the same code with trained model weight (r
 
 
 # Running the full system 
-1. Download trained system form [here]() or [here]() (or train from scratch).
+1. Download trained system form [here]() or [here]() or train from scratch (See training section).
 2. Open “RUN.py” in the main dir
 3. Set  input image folder path  to “ImageDir” (the images must be  .jpg format)
 4. Set output image folder to “OutFolder” 
