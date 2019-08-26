@@ -1,6 +1,6 @@
 ﻿# Generator evaluator selector modular net for panoptic image segmentation
 This code for the paper [Generator evaluator-selector net: a modular approach for
-panoptic segmentation](). To download the same code with trained model weight ready to run see these links [1]() [2]()
+panoptic segmentation](). To download the same code with trained model weight (ready to run )see these links [1]() [2]()
 
 # Tutorial 
 
