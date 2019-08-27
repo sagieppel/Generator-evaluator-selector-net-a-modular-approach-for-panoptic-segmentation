@@ -75,7 +75,7 @@ This 3 folders are the inputs for Pointer net training, they also be used to gen
 ### What does this generate?
 These scripts takes the all the trained pointer nets models and use them on the Pointer Training net data to generate predicted segmentation mask. The output folder contain subfolders “Pred” and “GT” which contain the predicted segment mask and the matching Ground Truth segment masks. The segments file names contain the name of the image used to generate the masks, the mask category ID (COCO), and the IOU between the predicted and GT segments. 
 These folders should be used as inputs for the  Evaluation/Classification/Refinement nets (after the data pass the cleaning process)
-## Cleaning training data  for Evaluation/Classification/Refinement nets (important).
+## Cleaning training data  for Evaluation/Classification/Refinement nets.
    1. Open ‘/PointerSegmentation/CleanGeneratedData/RUNCleaner.py”
    2. Set the path for the COCO image folder to the   “ImageDir” variable
    3. Set the path for the COCO panoptic annotation to the “AnnotationDir” variable.
