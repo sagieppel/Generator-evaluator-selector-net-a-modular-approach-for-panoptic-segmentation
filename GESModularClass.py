@@ -13,7 +13,7 @@ import scipy.misc as misc
 
 #########################################################################################################################
 class ModuNet:
-    def __init__(self,OutFolder = "/scratch/gobi2/seppel/Results/eval2017KKKKKKKKKKKKKKKKKK/",ImageDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",AnnotationDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",DataFile = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/panoptic_val2017.json", ClassificationConsistancyThresh = 0.65, GenerateStatics = False):
+    def __init__(self,OutFolder = "/scratch/gobi2/seppel/Results/eval2017KKKKKKKKKKKKKKKKKK/",ImageDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",AnnotationDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",DataFile = "panoptic_val2017.json", ClassificationConsistancyThresh = 0.65, GenerateStatics = False):
         self.GenerateStatics = GenerateStatics # Generate Statics during Proccess can be used only if GT annotation avaialble
         self.MainOutFolder = OutFolder
 #
