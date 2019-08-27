@@ -50,7 +50,6 @@ See Generating Data section for more instruction.
 
 
 
-# _______________________________________________________________________________________________
 # Generating Data for training
 # Generating data for Pointer Net training
 
@@ -88,7 +87,7 @@ The pairs of predicted and  GT segments generated earlier, might not correspond 
 
 
 
-#__________________________________________________
+# __________________________________________________
 # Description
 For detail description see [Generator evaluator-selector net: a modular approach for
 panoptic segmentation](https://arxiv.org/ftp/arxiv/papers/1908/1908.09108.pdf).
