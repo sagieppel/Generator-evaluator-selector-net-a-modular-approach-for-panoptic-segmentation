@@ -47,7 +47,7 @@ Running this “Evaluate.py” should generate evaluation statistics .
 All evaluation scripts can be run without change with the sample data included. 
 To evaluate  the net with real data, you need to first generate data.
 See Generating Data section for more instruction.
-Note, that you need to either train or [download trained model]() before evaluating. 
+
 
 
 #___________________________________________________________________________
