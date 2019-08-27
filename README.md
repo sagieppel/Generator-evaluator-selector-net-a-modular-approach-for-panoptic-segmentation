@@ -50,7 +50,7 @@ See Generating Data section for more instruction.
 
 
 
-#___________________________________________________________________________
+# _______________________________________________________________________________________________
 # Generating Data for training
 # Generating data for Pointer Net training
 
