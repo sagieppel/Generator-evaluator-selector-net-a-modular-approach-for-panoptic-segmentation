@@ -1,11 +1,12 @@
 ﻿# Generator evaluator selector modular net for panoptic image segmentation
 This code for the paper [Generator evaluator-selector net: a modular approach for
 panoptic segmentation](https://arxiv.org/ftp/arxiv/papers/1908/1908.09108.pdf). To download the same code with trained models weights (ready to run )see these links [1](https://drive.google.com/file/d/1hOO4QLQ0NfhvNj_K5VIBJCJ7LspqG0nF/view?usp=sharing) [2](https://drive.google.com/file/d/1k0mfvLv0QoA88b5CVxq6jf5sZkQFLJd0/view?usp=sharing).
-
+![](/Fig.jpg)
 ## Basic concept
 The system is composed of a Generator (Pointer Net) that generate segments, evaluator (Evaluation net) that rank and select segments to create category independent segmentation map (Figure 1), and a segment classification net that classifies the selected segments. The nets and the weights were trained and tested on the COCO panoptic data set.
 
 See the tutorial section for running/training instructions and the description section for more details on the system.
+
 ### Requirements 
 The system was run and trained using Python Anacoda 3.7 with pytorch 1.01, and opencv on single Titan XP GPU.
 
