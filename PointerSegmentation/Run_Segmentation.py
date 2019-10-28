@@ -3,9 +3,10 @@ import torch
 import numpy as np
 import FCN_NetModel as NET_FCN# The net Class
 from PIL import Image
+import cv2
 #.....................................Input parametrs..................................................................................................................
-InputImagePath="TestImages/Image3.jpg"
-Trained_model_path="PointerSegmentationNetWeights.torch"# Path of trained model
+InputImagePath="TestImages/Image"
+Trained_model_path="logs/Defult.torch"# Path of trained model
 OutputFile="TestImages/Label.png"
 #---------------------Create and Initiate net and create optimizer------------------------------------------------------------------------------------
 print("Loadin model")
