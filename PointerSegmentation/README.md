@@ -22,3 +22,9 @@ Three subfolders will be generated in the output dir (OutDir)
 2. The “SegMap” subfolder will contain the full annotation map for the image
 3. The “SegmentMask” subfolder will contain binary  masks for individual segments. The name of the file of each mask contain the image used to generate this mask and the category ID of this mask (with COCO panoptic 2017 dataset numeration)
 This 3 folders are the inputs for Pointer net training, they also be used to generate training data for Evaluation/Classification/Refinement nets.
+
+# Training
+After generating the DATA run TRAIN.py. Train model will be written to the log  folder
+# Runing
+run Run_Segmentation.py.
+(first train or download trained model)
