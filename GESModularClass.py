@@ -13,7 +13,7 @@ import scipy.misc as misc
 
 #########################################################################################################################
 class ModuNet:
-    def __init__(self,OutFolder = "/scratch/gobi2/seppel/Results/eval2017KKKKKKKKKKKKKKKKKK/",ImageDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",AnnotationDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",DataFile = "panoptic_val2017.json", ClassificationConsistancyThresh = 0.65, GenerateStatics = False):
+    def __init__(self,OutFolder = "",ImageDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/val2017/",AnnotationDir = "/scratch/gobi1/seppel/DataSets/COCO_PANOPTIC/PanopticFull/panoptic_val2017",DataFile = "panoptic_val2017.json", ClassificationConsistancyThresh = 0.65, GenerateStatics = False):
         self.GenerateStatics = GenerateStatics # Generate Statics during Proccess can be used only if GT annotation avaialble
         self.MainOutFolder = OutFolder
 #
@@ -125,31 +125,28 @@ class ModuNet:
 #==================Generate statistics============================================================================
             if self.GenerateStatics:
                 # -------Display Statitics------------------------------
-                print(str(iii)+")-------------------all---------------------------------------------------")
+                print(str(iii)+")-------------------all segments generated even those that was not selected---------------------------------------------------")
                 print("total number=" + str(len(self.St_IsThing)))
                 Thing = np.array(self.St_IsThing) == 1
 
                 Stuff = np.array(self.St_IsThing) == 0
-                print("GT IOU Things=" + str(np.median(np.array(self.St_IOU_GT)[Thing])))
-                print("GT IOU Stuff=" + str(np.median(np.array(self.St_IOU_GT)[Stuff])))
+                print("Mean IOU of selected segments Things=" + str(np.mean(np.array(self.St_IOU_GT)[Thing])))
+                print("Mean IOU of selected segments Stuff=" + str(np.median(np.array(self.St_IOU_GT)[Stuff])))
 
-                print("Dif IOU Thing=" + str(np.median(np.array(self.St_IOU_DIF)[Thing])))
-                print("Dif IOU Stuff=" + str(np.median(np.array(self.St_IOU_DIF)[Stuff])))
-
-                print("GT precission Things=" + str(np.median(np.array(self.St_PrecisionGT)[Thing])))
-                print("GT precission Stuff=" + str(np.median(np.array(self.St_PrecisionGT)[Stuff])))
-                print(str(iii)+")...................Top................................................................")
+                print(" Mean, Diffrence between the predicted and real IOU  of the selected segments. Thing=" + str(np.mean(np.array(self.St_IOU_DIF)[Thing])))
+                print("Mean, Diffrence between the predicted and real IOU  of the selected segments. Stuff=" + str(np.mean(np.array(self.St_IOU_DIF)[Stuff])))
+                print(str(iii)+")...................Top segments generated in term of IOU (either top real IOU or top predicted IOU (by the evaluator)................................................................")
                 Us = np.array(self.St_SelectedSg_IsThing) > 0
-                print("Median Selected Segment IOU Median=" + str(np.median(np.abs(np.array(self.St_SelectedSgIOU))[Us]))+" Mean=" + str(np.mean(np.abs(np.array(self.St_SelectedSgIOU))[Us])))
+                print("IOU of the segment that was by the evaluator.       Median=" + str(np.median(np.abs(np.array(self.St_SelectedSgIOU))[Us]))+" Mean=" + str(np.mean(np.abs(np.array(self.St_SelectedSgIOU))[Us])))
 
-                print("Median Top Segment IOU Median=" + str(np.median(np.abs(np.array(self.St_TopSgIOU))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_TopSgIOU))[Us])))
+                print("IOU of the generated segment with the highest IOU  (GT iou not evaluated).     Median=" + str(np.median(np.abs(np.array(self.St_TopSgIOU))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_TopSgIOU))[Us])))
 
-                print("Dif IOU_TOP_SELECTED Median=" + str(np.median(np.abs(np.array(self.St_DifIOU_TOP_SELECTED))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_DifIOU_TOP_SELECTED))[Us])))
+                print("Difference of IOU of  between best segment generated and the segment that was selected.     Median=" + str(np.median(np.abs(np.array(self.St_DifIOU_TOP_SELECTED))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_DifIOU_TOP_SELECTED))[Us])))
 
-                print("Dif Top Median=" + str(np.median(np.abs(np.array(self.St_DifTop))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_DifTop))[Us])))
+                print("Difference between  the predicted and GT IOU of the best segments in each cycle. Median=" + str(np.median(np.abs(np.array(self.St_DifTop))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_DifTop))[Us])))
 
-                print("Dif selected Median=" + str(np.median(np.abs(np.array(self.St_DifSelected))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_DifSelected))[Us])))
-                print("Category Accuracy Rate Mean=" + str(np.array(self.St_CorrectClass).mean()))
+                print("Difference between  the predicted and GT IOU of the selected  by the evaluator (in each cycle).  segments. Median=" + str(np.median(np.abs(np.array(self.St_DifSelected))[Us]))+" Mean=" +  str(np.mean(np.abs(np.array(self.St_DifSelected))[Us])))
+                print("Category prediction Accuracy Rate =" + str(np.array(self.St_CorrectClass).mean()))
 
 ###############################################################################################################################################################
 ##################################Run prediction for a single file##################################################################################################################################

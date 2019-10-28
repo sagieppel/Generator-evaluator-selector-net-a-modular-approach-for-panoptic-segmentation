@@ -34,6 +34,7 @@ class Reader:
         self.itr = 0 # Training iteratation
         self.suffle=Suffle # Suffle list of file
         self.AnnData = False
+        self.MinSegSize=100
 #........................Read data file................................................................................................................
         if not DataFile=="":
            with open(DataFile) as json_file:
@@ -109,7 +110,6 @@ class Reader:
                     seg["Mask"]=TMask[i]
                     seg["BBox"]=TBBox[i]
                     seg["Area"]=TSz[i]
-                    if (not an["isthing"]): seg["Area"]*=self.StuffAreaFactor
                     if seg["Area"] < self.MinSegSize and IgnoreSmallSeg:
                         Ann[Ann == an['id']] = self.UnlabeledTag
                         continue
@@ -127,7 +127,6 @@ class Reader:
                     seg["Mask"] = (Ann == an['id'])
                     seg["BBox"] = an["bbox"]
                     seg["Area"] = an["area"]
-                    if (not an["isthing"]): seg["Area"] *= self.StuffAreaFactor
                     if seg["Area"] < self.MinSegSize and IgnoreSmallSeg: # Ignore very small segments
                         Ann[Ann == an['id']] = self.UnlabeledTag
                         continue
@@ -187,10 +186,10 @@ class Reader:
                 # self.BROIMask = np.expand_dims(ROIMap, axis=0).astype(np.float32)
                 # --------------------------------For Statitics collection---------------------------------------------------------------------------------
                 if GenStatistics:
-                    Ann = cv2.imread(self.AnnotationDir + "/" + self.FileList[self.itr])  # Load Annotation
+                    Ann = cv2.imread(self.AnnotationDir + "/" + self.FileList[self.itr].replace(".jpg",".png"))  # Load Annotation
                     Ann = Ann[..., :: -1]
                     Ann = rgb2id(Ann)
-                    self.Sgs, SumAreas = self.GeneratListOfAllSegments(Ann, self.FileList[self.itr])
+                    self.Sgs, SumAreas = self.GeneratListOfAllSegments(Ann, self.FileList[self.itr].replace(".jpg",".png"))
 #-----------------Load--------------------------------------------------------------------------------------------------------
             else:
                  ROIMap = cv2.erode(self.ROIMap.astype(np.uint8),np.ones((2,2),np.uint8),iterations=3)
@@ -238,7 +237,7 @@ class Reader:
         MaxIOU=-1
         TopSeg=0
         for seg in self.Sgs:
-            IOU=(seg["Mask"] * SegMask).sum() / (seg["Mask"].sum() + SegMask.sum() - (seg["Mask"] * SegMask).sum())
+            IOU=(seg["Mask"] * SegMask).sum() / (seg["Mask"].sum() + SegMask.sum() - (seg["Mask"] * SegMask).sum()+0.00001)
             if IOU>MaxIOU:
                 MaxIOU=IOU
                 TopSeg=seg
