@@ -5,9 +5,9 @@ import FCN_NetModel as NET_FCN# The net Class
 from PIL import Image
 import cv2
 #.....................................Input parametrs..................................................................................................................
-InputImagePath="TestImages/Image"
+InputImagePath="Image"
 Trained_model_path="logs/Defult.torch"# Path of trained model
-OutputFile="TestImages/Label.png"
+OutputFile="Label.png"
 #---------------------Create and Initiate net and create optimizer------------------------------------------------------------------------------------
 print("Loadin model")
 Net=NET_FCN.Net(NumClasses=2) # Create net and load pretrained encoder path
