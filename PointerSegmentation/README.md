@@ -24,7 +24,7 @@ Three subfolders will be generated in the output dir (OutDir)
 This 3 folders are the inputs for Pointer net training, they also be used to generate training data for Evaluation/Classification/Refinement nets.
 
 # Training
-After generating the DATA run TRAIN.py. Train model will be written to the log  folder
+After generating the training data (above section) run TRAIN.py. Train model will be written to the log  folder
 # Runing
 run Run_Segmentation.py.
 (first train or download trained model from rom [here](https://drive.google.com/file/d/1hOO4QLQ0NfhvNj_K5VIBJCJ7LspqG0nF/view?usp=sharing) or [here](https://drive.google.com/file/d/1k0mfvLv0QoA88b5CVxq6jf5sZkQFLJd0/view?usp=sharing))
