@@ -1,5 +1,4 @@
-# Pointer net:
-## See parent folder for usage instructions  
+# Pointer net: 
 Pointer net receives an image and a point within this image. The net predicts the mask of the segment that contains the input point. Another input of the pointer net is a region of interest (ROI) mask which restricts the region of the predicted segments. The generated output segment region will be confined to the ROI mask.  Fully trained system can be download from [here](https://drive.google.com/file/d/1hOO4QLQ0NfhvNj_K5VIBJCJ7LspqG0nF/view?usp=sharing) or [here](https://drive.google.com/file/d/1k0mfvLv0QoA88b5CVxq6jf5sZkQFLJd0/view?usp=sharing).
 
 
