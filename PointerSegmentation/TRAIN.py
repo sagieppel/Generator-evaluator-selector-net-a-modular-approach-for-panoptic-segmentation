@@ -120,7 +120,7 @@ for itr in range(InitStep,MAX_ITERATION): # Main training loop
         Learning_Rate-= Learning_Rate_Decay
         if Learning_Rate<=1e-6:
             Learning_Rate_Init-=1e-6
-            Learning_Rate=Learning_Rate_Init
+            Learning_Rate=Learning_Rate_Init.copy()*1.00001
             Learning_Rate_Decay=Learning_Rate/20
         print("Learning Rate="+str(Learning_Rate)+"   Learning_Rate_Init="+str(Learning_Rate_Init))
         print("======================================================================================================================")
